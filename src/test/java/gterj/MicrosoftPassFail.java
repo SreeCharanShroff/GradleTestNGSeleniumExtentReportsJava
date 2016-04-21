@@ -16,24 +16,24 @@ public class MicrosoftPassFail {
 
     @BeforeTest
     @Parameters({"implicitWait", "browser", "baseURL"})
-    public void setUp(String implicitWait, String browser, String baseURL) {
+    public final void setUp(String implicitWait, String browser, String baseURL) {
         this.driver = BrowserDriver.initialize(driver, implicitWait, browser, baseURL);
     }
 
     @Test
-    public void testMicrosoftPass() {
+    public final void testMicrosoftPass() {
         driver.findElement(By.xpath("//input[@title='Search Microsoft.com']")).sendKeys("SreeCharan Shroff");
         Assert.assertEquals(driver.getTitle(), "Microsoft – Official Home Page");
     }
 
     @Test(dependsOnMethods = "testMicrosoftPass")
-    public void testMicrosoftFail() {
+    public final void testMicrosoftFail() {
         driver.findElement(By.xpath("//button[@title='Search')]")).click();
         Assert.assertEquals(driver.getTitle(), "Microsoft – Official Home Pages");
     }
 
     @AfterTest
-    public void cleanUp() {
+    public final void cleanUp() {
         BrowserDriver.destroy(driver);
     }
 }
