@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sample Gradle TestNG ExtentReports Java Test Suite">
+    <listeners>
+        <listener class-name="gterj.ExtentReporterNG"/>
+    </listeners>
+    <parameter name="implicitWait" value="30"/>
+    <test name="Google Pass Fail Test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="baseURL" value="http://google.co.in"/>
+        <classes>
+            <class name="gterj.GooglePassFail"/>
+        </classes>
+    </test>
+
+    <test name="Microsoft Pass Fail Test">
+        <parameter name="browser" value="ie"/>
+        <parameter name="baseURL" value="http://microsoft.com"/>
+        <classes>
+            <class name="gterj.MicrosoftPassFail"/>
+        </classes>
+    </test>
+</suite>
