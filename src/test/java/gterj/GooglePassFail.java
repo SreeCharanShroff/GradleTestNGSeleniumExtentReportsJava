@@ -13,24 +13,24 @@ public class GooglePassFail {
 
     @BeforeTest
     @Parameters({"implicitWait", "browser", "baseURL"})
-    public void setUp(String implicitWait, String browser, String baseURL) {
+    public final void setUp(String implicitWait, String browser, String baseURL) {
         this.driver = BrowserDriver.initialize(driver, implicitWait, browser, baseURL);
     }
 
     @Test
-    public void testGooglePass() {
+    public final void testGooglePass() {
         driver.findElement(By.xpath("//*[@name='q']")).sendKeys("SreeCharan Shroff");
         Assert.assertEquals(driver.getTitle(), "Google");
     }
 
     @Test(dependsOnMethods = "testGooglePass")
-    public void testGoogleFail() {
+    public final void testGoogleFail() {
         driver.findElement(By.xpath("//*[@name='btnG']")).click();
         Assert.assertEquals(driver.getTitle(), "Gogle");
     }
 
     @AfterTest
-    public void cleanUp() {
+    public final void cleanUp() {
         BrowserDriver.destroy(driver);
     }
 }
