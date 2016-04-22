@@ -9,7 +9,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shrofs on 4/17/2016.
  */
-public class BrowserDriver {
+public final class BrowserDriver {
+
+    private BrowserDriver() {
+    }
 
     public static WebDriver initialize(WebDriver driver, final String implicitWait, final String browser, final String baseURL) {
         switch (browser) {

@@ -3,6 +3,7 @@ package gterj;
 /**
  * Created by shrofs on 7/16/2015.
  */
+
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class ExtentReporterNG implements IReporter {
     private ExtentReports extent;
 
     @Override
-    public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
+    public final void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         extent = new ExtentReports(outputDirectory + File.separator + "Extent.html", true);
 
         for (ISuite suite : suites) {
@@ -50,9 +51,9 @@ public class ExtentReporterNG implements IReporter {
 
                 String message = "Test " + status.toString().toLowerCase() + "ed";
 
-                if (result.getThrowable() != null)
+                if (result.getThrowable() != null) {
                     message = result.getThrowable().getMessage();
-
+                }
                 test.log(status, message);
 
                 extent.endTest(test);
